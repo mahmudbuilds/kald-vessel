@@ -35,7 +35,7 @@ export function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLightTheme, setIsLightTheme] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeChapter, setActiveChapter] = useState('01 · VESSEL');
+  const [activeChapter, setActiveChapter] = useState('KALD 01');
 
   const choreographyRef = useRef<FlaskChoreographyState>({
     explodeProgress: 0,
@@ -64,11 +64,11 @@ export function App() {
 
     // Chapter tracker triggers
     const chapters = [
-      { id: 'hero', label: '01 · VESSEL' },
-      { id: 'anatomy', label: '02 · ANATOMY' },
-      { id: 'thermal', label: '03 · THERMODYNAMICS' },
-      { id: 'editions', label: '04 · EDITIONS' },
-      { id: 'lookbook', label: '05 · FIELD' },
+      { id: 'hero', label: 'KALD 01' },
+      { id: 'anatomy', label: 'The Craft' },
+      { id: 'thermal', label: 'Performance' },
+      { id: 'editions', label: 'Finishes' },
+      { id: 'lookbook', label: 'Journal' },
     ];
 
     const triggers = chapters.map((ch) =>

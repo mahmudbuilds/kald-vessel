@@ -77,50 +77,50 @@ export function CollectionSection({
     <section
       id="editions"
       ref={sectionRef}
-      className="relative z-30 w-full bg-[#f4f1ea] px-6 py-28 text-[#111113] md:px-12 md:py-36"
+      className="relative z-30 w-full bg-[#f4f1ea] px-5 py-20 text-[#111113] sm:px-8 md:px-12 md:py-36"
     >
       <div className="mx-auto max-w-[1600px]">
         {/* Section Header */}
-        <div className="editions-stagger mb-14 flex flex-wrap items-end justify-between gap-6 border-b border-[#111113]/12 pb-8">
+        <div className="editions-stagger mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-[#111113]/12 pb-6 md:mb-14 md:gap-6 md:pb-8">
           <div>
             <span className="font-mono-tech text-[11px] tracking-[0.22em] text-[#d4724e] uppercase">
-              04 / ARCHITECTURAL EDITIONS
+              Tailored to You
             </span>
-            <h2 className="mt-3 font-display text-4xl leading-[0.95] font-extrabold tracking-tight uppercase md:text-6xl">
-              Configure your
-              <span className="ml-3 font-serif-editorial font-normal italic lowercase">
-                vessel.
+            <h2 className="mt-2 font-display text-3xl leading-[0.95] font-extrabold tracking-tight uppercase sm:text-4xl md:mt-3 md:text-6xl">
+              Make it
+              <span className="ml-2.5 font-serif-editorial font-normal italic lowercase sm:ml-3">
+                yours.
               </span>
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-[#111113]/65">
+          <p className="max-w-sm text-xs leading-relaxed text-[#111113]/65 sm:text-sm">
             Four mineral-inspired finishes milled in small batches. Complimentary
             micro-laser monogramming included on every direct studio order.
           </p>
         </div>
 
         {/* Configurator Grid */}
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
+        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Left: Live Studio Blueprint & Laser Monogram Preview */}
           <div className="editions-stagger lg:col-span-6">
-            <div className="relative flex min-h-[540px] flex-col items-center justify-between overflow-hidden rounded-3xl border border-[#111113]/10 bg-[#eae5db] p-8 md:p-12">
-              <div className="flex w-full items-center justify-between">
-                <span className="rounded-full bg-[#111113] px-3.5 py-1 font-mono-tech text-[10px] tracking-[0.2em] text-[#f4f1ea] uppercase">
+            <div className="relative flex min-h-[340px] flex-col items-center justify-between overflow-hidden rounded-3xl border border-[#111113]/10 bg-[#eae5db] p-5 sm:min-h-[430px] sm:p-8 md:p-12 lg:min-h-[540px]">
+              <div className="flex w-full items-center justify-between gap-2">
+                <span className="rounded-full bg-[#111113] px-3 py-1 font-mono-tech text-[10px] tracking-[0.2em] text-[#f4f1ea] uppercase">
                   {selectedEdition.tag}
                 </span>
-                <span className="font-mono-tech text-[11px] tracking-[0.18em] text-[#111113]/55 uppercase">
+                <span className="font-mono-tech text-[10px] tracking-[0.14em] text-[#111113]/55 uppercase sm:text-[11px]">
                   {selectedSize.dimensions} · {selectedSize.weight}
                 </span>
               </div>
 
               {/* Architectural Studio Flask Silhouette Preview with Live Engraving */}
-              <div className="relative my-8 flex items-center justify-center">
+              <div className="relative my-5 flex items-center justify-center sm:my-8">
                 {/* Soft studio drop shadow */}
-                <div className="absolute -bottom-6 h-8 w-44 rounded-full bg-[#111113]/18 blur-xl" />
+                <div className="absolute -bottom-4 h-6 w-32 rounded-full bg-[#111113]/18 blur-xl sm:-bottom-6 sm:h-8 sm:w-44" />
 
                 <svg
                   viewBox="0 0 220 460"
-                  className="h-[340px] w-auto transition-transform duration-500 hover:scale-[1.02] md:h-[390px]"
+                  className="h-[220px] w-auto transition-transform duration-500 hover:scale-[1.02] sm:h-[300px] md:h-[360px] lg:h-[390px]"
                 >
                   <defs>
                     <linearGradient id="flaskBodyGrad" x1="0" y1="0" x2="1" y2="0">
@@ -235,9 +235,9 @@ export function CollectionSection({
                 </svg>
               </div>
 
-              <div className="flex w-full items-center justify-between border-t border-[#111113]/10 pt-4 font-mono-tech text-[10px] tracking-[0.2em] text-[#111113]/60 uppercase">
-                <span>FINISH: {selectedEdition.subtitle}</span>
-                <span>LASER ETCH: {engraving.trim().toUpperCase() || 'NONE'}</span>
+              <div className="flex w-full flex-wrap items-center justify-between gap-2 border-t border-[#111113]/10 pt-4 font-mono-tech text-[10px] tracking-[0.14em] text-[#111113]/60 uppercase sm:tracking-[0.2em]">
+                <span className="whitespace-nowrap">Finish: {selectedEdition.subtitle}</span>
+                <span className="whitespace-nowrap">Engraving: {engraving.trim().toUpperCase() || 'None'}</span>
               </div>
             </div>
           </div>
@@ -248,7 +248,7 @@ export function CollectionSection({
             <div>
               <div className="mb-3 flex items-center justify-between">
                 <span className="font-mono-tech text-[11px] tracking-[0.2em] text-[#111113]/60 uppercase">
-                  01 · SELECT FINISH
+                  01 · Choose Finish
                 </span>
                 <span className="font-mono-tech text-[11px] font-medium text-[#111113] uppercase">
                   {selectedEdition.name}
@@ -302,7 +302,7 @@ export function CollectionSection({
             {/* 2. Capacity Selector */}
             <div>
               <span className="mb-3 block font-mono-tech text-[11px] tracking-[0.2em] text-[#111113]/60 uppercase">
-                02 · SELECT CAPACITY
+                02 · Choose Size
               </span>
               <div className="grid grid-cols-3 gap-3">
                 {FLASK_SIZES.map((sz) => {
@@ -340,10 +340,10 @@ export function CollectionSection({
               <div className="mb-3 flex items-center justify-between">
                 <span className="flex items-center gap-2 font-mono-tech text-[11px] tracking-[0.2em] text-[#111113]/60 uppercase">
                   <Sparkles className="h-3.5 w-3.5 text-[#d4724e]" />
-                  03 · LASER MONOGRAM (COMPLIMENTARY)
+                  03 · Complimentary Engraving
                 </span>
                 <span className="font-mono-tech text-[10px] text-[#111113]/50">
-                  MAX 4 CHARS
+                  Up to 4 characters
                 </span>
               </div>
               <input
@@ -357,10 +357,10 @@ export function CollectionSection({
             </div>
 
             {/* Add to Bag Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#111113]/12 pt-6">
+            <div className="flex flex-col items-stretch justify-between gap-4 border-t border-[#111113]/12 pt-6 sm:flex-row sm:items-center">
               <div>
                 <span className="block font-mono-tech text-[10px] tracking-[0.2em] text-[#111113]/50 uppercase">
-                  CONFIGURED TOTAL
+                  Total
                 </span>
                 <span className="text-4xl font-semibold tracking-tight tabular-nums">
                   ${finalPrice}
@@ -371,7 +371,7 @@ export function CollectionSection({
                 onClick={handleAdd}
                 variant="dark"
                 cursorLabel={justAdded ? 'ADDED' : 'ADD TO BAG'}
-                className="min-w-[230px]"
+                className="w-full sm:w-auto sm:min-w-[230px]"
               >
                 {justAdded ? (
                   <>

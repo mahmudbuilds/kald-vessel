@@ -48,6 +48,7 @@ export function Preloader({ onComplete }: PreloaderProps) {
   return (
     <div
       ref={containerRef}
+      data-preloader
       className="fixed inset-0 z-[1000] flex flex-col justify-between bg-[#09090b] px-6 py-8 text-[#f4f1ea] md:px-12 md:py-10"
     >
       <div className="flex items-center justify-between">
@@ -55,7 +56,7 @@ export function Preloader({ onComplete }: PreloaderProps) {
           KALD®
         </span>
         <span className="font-mono-tech text-[11px] tracking-[0.2em] text-[#f4f1ea]/50 uppercase">
-          VACUUM SEAL CALIBRATION // -0.004 PA
+          Nordic Thermal Craft
         </span>
       </div>
 
@@ -77,8 +78,8 @@ export function Preloader({ onComplete }: PreloaderProps) {
       </div>
 
       <div className="flex items-center justify-between font-mono-tech text-[10px] tracking-[0.22em] text-[#f4f1ea]/40 uppercase">
-        <span>GOTHENBURG · STUDIO 01</span>
-        <span>304 SURGICAL GRADE STEEL</span>
+        <span>Gothenburg, Sweden</span>
+        <span>18/8 Surgical Steel</span>
       </div>
     </div>
   );

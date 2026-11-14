@@ -41,12 +41,12 @@ export function Navbar({
             KALD®
           </span>
           <span
-            className={`hidden h-3 w-[1px] sm:inline-block ${
+            className={`hidden h-3 w-[1px] lg:inline-block ${
               isLightTheme ? 'bg-[#111113]/25' : 'bg-[#f4f1ea]/25'
             }`}
           />
           <span
-            className={`hidden font-mono-tech text-[10px] tracking-[0.2em] uppercase sm:inline-block ${
+            className={`hidden whitespace-nowrap font-mono-tech text-[10px] tracking-[0.2em] uppercase lg:inline-block ${
               isLightTheme ? 'text-[#111113]/60' : 'text-[#f4f1ea]/55'
             }`}
           >
@@ -54,19 +54,19 @@ export function Navbar({
           </span>
         </button>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 md:flex lg:gap-8">
           {[
-            { id: 'anatomy', label: 'Anatomy' },
-            { id: 'thermal', label: 'Thermodynamics' },
-            { id: 'editions', label: 'Editions' },
-            { id: 'lookbook', label: 'Field' },
+            { id: 'anatomy', label: 'Craft' },
+            { id: 'thermal', label: 'Performance' },
+            { id: 'editions', label: 'Shop' },
+            { id: 'lookbook', label: 'Journal' },
           ].map((item) => (
             <button
               key={item.id}
               type="button"
               onClick={() => scrollToSection(item.id)}
-              data-cursor="JUMP"
-              className={`font-mono-tech text-[11px] tracking-[0.2em] uppercase transition-opacity hover:opacity-100 ${
+              data-cursor="VIEW"
+              className={`whitespace-nowrap font-mono-tech text-[11px] tracking-[0.2em] uppercase transition-opacity hover:opacity-100 ${
                 isLightTheme ? 'text-[#111113]/70' : 'text-[#f4f1ea]/65'
               }`}
             >
@@ -79,14 +79,14 @@ export function Navbar({
           type="button"
           onClick={onOpenCart}
           data-cursor="BAG"
-          className={`flex items-center gap-3 rounded-full border px-4 py-2 backdrop-blur-md transition-all duration-300 ${
+          className={`flex shrink-0 items-center gap-2.5 whitespace-nowrap rounded-full border px-4 py-2 backdrop-blur-md transition-all duration-300 ${
             isLightTheme
               ? 'border-[#111113]/20 bg-[#f4f1ea]/75 hover:border-[#111113]'
               : 'border-[#f4f1ea]/20 bg-[#09090b]/60 hover:border-[#d4724e]'
           }`}
         >
-          <ShoppingBag className="h-3.5 w-3.5" />
-          <span className="font-mono-tech text-[11px] tracking-[0.18em] uppercase">
+          <ShoppingBag className="h-3.5 w-3.5 shrink-0" />
+          <span className="whitespace-nowrap font-mono-tech text-[11px] tracking-[0.18em] uppercase">
             Bag ({cartCount})
           </span>
         </button>

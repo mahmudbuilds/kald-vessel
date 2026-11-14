@@ -5,9 +5,9 @@ import { MagneticButton } from './MagneticButton';
 const SPECS_ACCORDION = [
   {
     code: '01',
-    question: 'How does KALD achieve 36 hours cold without exterior condensation?',
+    question: 'How does KALD keep drinks cold for 36 hours without sweating?',
     answer:
-      'A high-vacuum 0.004 Pa gap eliminates air molecules between the 0.5mm inner and outer 304 steel shells, halting conductive and convective heat transfer. Our 99.9% copper foil lining reflects ambient infrared radiation outward, keeping the exterior strictly at room temperature.',
+      'A sealed vacuum gap sits between the inner and outer stainless steel walls, preventing heat from passing through. Inside, a pure copper lining reflects radiant warmth outward so the exterior always stays dry to the touch.',
   },
   {
     code: '02',
@@ -37,23 +37,23 @@ export function SpecsAndFooter({ onReserveClick }: SpecsAndFooterProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <footer className="relative z-30 w-full bg-[#09090b] px-6 pt-28 pb-12 text-[#f4f1ea] md:px-12">
+    <footer className="relative z-30 w-full bg-[#09090b] px-5 pt-16 pb-10 text-[#f4f1ea] sm:px-8 md:px-12 md:pt-28 md:pb-12">
       <div className="mx-auto max-w-[1600px]">
         {/* Technical Dossier Accordion */}
-        <div className="grid grid-cols-1 gap-12 border-t border-[#f4f1ea]/12 pt-20 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-8 border-t border-[#f4f1ea]/12 pt-14 md:gap-12 md:pt-20 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <span className="font-mono-tech text-[11px] tracking-[0.22em] text-[#d4724e] uppercase">
-              06 / TECHNICAL DOSSIER
+              Questions &amp; Care
             </span>
             <h2 className="mt-3 font-display text-3xl font-bold tracking-tight uppercase md:text-5xl">
-              Precision
+              Details that
               <span className="block font-serif-editorial font-normal italic text-[#f4f1ea]/80 lowercase">
-                verified.
+                last.
               </span>
             </h2>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#f4f1ea]/60">
-              Every batch undergoes helium mass-spectrometer leak testing and 24-hour
-              thermal chamber calibration before leaving Gothenburg.
+              Every flask is pressure-tested for leaks and inspected by hand before
+              leaving our Gothenburg workshop.
             </p>
           </div>
 
@@ -72,7 +72,7 @@ export function SpecsAndFooter({ onReserveClick }: SpecsAndFooterProps) {
                       <span className="font-mono-tech text-xs text-[#d4724e]">
                         {item.code}
                       </span>
-                      <span className="font-display text-lg font-semibold tracking-tight md:text-xl">
+                      <span className="font-display text-base font-semibold tracking-tight sm:text-lg md:text-xl">
                         {item.question}
                       </span>
                     </div>
@@ -98,27 +98,27 @@ export function SpecsAndFooter({ onReserveClick }: SpecsAndFooterProps) {
         </div>
 
         {/* Closing Editorial Banner */}
-        <div className="mt-28 flex flex-col items-start justify-between gap-10 rounded-3xl border border-[#f4f1ea]/12 bg-[#111114] p-8 md:flex-row md:items-end md:p-16">
+        <div className="mt-16 flex flex-col items-start justify-between gap-6 rounded-3xl border border-[#f4f1ea]/12 bg-[#111114] p-6 sm:p-8 md:mt-28 md:flex-row md:items-end md:gap-10 md:p-16">
           <div>
             <span className="font-mono-tech text-[11px] tracking-[0.22em] text-[#d4724e] uppercase">
-              BATCH 04 NOW SHIPPING
+              In Stock · Ships Worldwide
             </span>
-            <h3 className="mt-4 font-display text-4xl leading-[0.95] font-extrabold tracking-tight uppercase md:text-6xl">
+            <h3 className="mt-3 font-display text-3xl leading-[0.95] font-extrabold tracking-tight uppercase sm:text-4xl md:mt-4 md:text-6xl">
               Own the
-              <span className="ml-3 font-serif-editorial font-normal italic text-[#f4f1ea]/85 lowercase">
+              <span className="ml-2.5 font-serif-editorial font-normal italic text-[#f4f1ea]/85 lowercase sm:ml-3">
                 stillness.
               </span>
             </h3>
           </div>
 
-          <MagneticButton onClick={onReserveClick} cursorLabel="CONFIGURE">
-            Configure Your Vessel
+          <MagneticButton onClick={onReserveClick} cursorLabel="SHOP" className="w-full md:w-auto">
+            Shop the Collection
             <ArrowUpRight className="h-4 w-4" />
           </MagneticButton>
         </div>
 
         {/* Monumental Footer Wordmark */}
-        <div className="mt-24 border-t border-[#f4f1ea]/10 pt-10">
+        <div className="mt-16 border-t border-[#f4f1ea]/10 pt-8 md:mt-24 md:pt-10">
           <div className="flex flex-wrap items-center justify-between gap-4 font-mono-tech text-[10px] tracking-[0.22em] text-[#f4f1ea]/45 uppercase">
             <span>© 2026 KALD THERMAL STUDIO AB · GOTHENBURG</span>
             <span>SHIPS CARBON-NEUTRAL WORLDWIDE</span>

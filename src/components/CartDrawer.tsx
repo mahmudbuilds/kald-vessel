@@ -63,10 +63,10 @@ export function CartDrawer({
           <div className="flex items-center justify-between border-b border-[#f4f1ea]/12 pb-5">
             <div>
               <span className="block font-mono-tech text-[10px] tracking-[0.22em] text-[#d4724e] uppercase">
-                YOUR RESERVATION
+                Your Selection
               </span>
               <h2 className="mt-1 font-display text-2xl font-bold uppercase">
-                Studio Bag
+                Your Bag
               </h2>
             </div>
             <button
@@ -85,8 +85,8 @@ export function CartDrawer({
             <div className="flex items-center justify-between font-mono-tech text-[10px] tracking-[0.16em] uppercase">
               <span>
                 {remaining === 0
-                  ? 'EXPRESS CARBON-NEUTRAL SHIPPING UNLOCKED'
-                  : `ADD $${remaining} FOR FREE EXPRESS SHIPPING`}
+                  ? 'Free express carbon-neutral shipping unlocked'
+                  : `Add $${remaining} more for free express shipping`}
               </span>
               <span className="text-[#d4724e]">{Math.round(shippingPct)}%</span>
             </div>
@@ -105,21 +105,20 @@ export function CartDrawer({
             <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
               <CheckCircle2 className="h-12 w-12 text-[#d4724e]" />
               <h3 className="font-display text-2xl font-bold uppercase">
-                Reservation Confirmed
+                Order Confirmed
               </h3>
               <p className="max-w-xs text-sm text-[#f4f1ea]/65">
-                Batch 04 dispatch telemetry has been queued. Gothenburg studio
-                engraving begins shortly.
+                Thank you for your order. Our Gothenburg studio will prepare and
+                engrave your flask shortly.
               </p>
             </div>
           ) : items.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
               <span className="font-mono-tech text-xs tracking-[0.2em] text-[#f4f1ea]/40 uppercase">
-                YOUR BAG IS EMPTY
+                Your bag is empty
               </span>
               <p className="max-w-xs text-sm text-[#f4f1ea]/55">
-                Configure a KALD 01 Vacuum Vessel in your preferred mineral finish
-                and capacity.
+                Choose a finish and size from the collection to get started.
               </p>
             </div>
           ) : (
@@ -139,8 +138,8 @@ export function CartDrawer({
                         KALD 01 · {item.edition.name}
                       </h4>
                       <span className="mt-0.5 block font-mono-tech text-[10px] tracking-[0.16em] text-[#f4f1ea]/55 uppercase">
-                        {item.size.label} · ETCH:{' '}
-                        {item.engraving ? item.engraving : 'NONE'}
+                        {item.size.label} · Engraved:{' '}
+                        {item.engraving ? item.engraving : 'None'}
                       </span>
 
                       <div className="mt-3 flex items-center gap-2">
@@ -191,7 +190,7 @@ export function CartDrawer({
           <div className="border-t border-[#f4f1ea]/12 pt-5">
             <div className="mb-4 flex items-center justify-between">
               <span className="font-mono-tech text-xs tracking-[0.18em] text-[#f4f1ea]/60 uppercase">
-                ESTIMATED TOTAL
+                Subtotal
               </span>
               <span className="text-3xl font-semibold tracking-tight tabular-nums">
                 ${subtotal}
@@ -200,10 +199,10 @@ export function CartDrawer({
             <button
               type="button"
               onClick={handleCheckout}
-              data-cursor="ORDER"
+              data-cursor="CHECKOUT"
               className="w-full rounded-full bg-[#f4f1ea] py-4 font-mono-tech text-xs font-semibold tracking-[0.22em] text-[#09090b] uppercase transition-colors hover:bg-[#d4724e]"
             >
-              Complete Reservation — ${subtotal}
+              Checkout — ${subtotal}
             </button>
           </div>
         )}

@@ -122,10 +122,10 @@ export function ThermalSection() {
   const isNeutral = Number(currentTemp) > -2 && Number(currentTemp) < 20;
 
   const phaseLabel = isHot
-    ? 'PHASE III // BOILING PRESERVATION'
+    ? 'Piping Hot'
     : isNeutral
-      ? 'PHASE II // AMBIENT EQUILIBRIUM'
-      : 'PHASE I // SUB-ZERO STASIS';
+      ? 'Ambient Hold'
+      : 'Glacial Cold';
 
   const glowColor = isHot
     ? 'rgba(212, 114, 78, 0.25)'
@@ -137,7 +137,7 @@ export function ThermalSection() {
     <section
       id="thermal"
       ref={sectionRef}
-      className="relative z-30 flex min-h-screen w-full items-center overflow-hidden bg-[#09090b] px-6 py-24 text-[#f4f1ea] md:px-12"
+      className="relative z-30 flex min-h-[100dvh] w-full items-center overflow-hidden bg-[#09090b] px-5 pt-20 pb-8 text-[#f4f1ea] sm:px-8 md:px-12 lg:py-24"
     >
       {/* Live thermal particle canvas */}
       <canvas
@@ -147,26 +147,26 @@ export function ThermalSection() {
 
       {/* Dynamic scrubbed temperature glow */}
       <div
-        className="pointer-events-none absolute top-1/2 left-1/2 h-[680px] w-[680px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[160px] transition-colors duration-500"
+        className="pointer-events-none absolute top-1/2 left-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[130px] transition-colors duration-500 lg:h-[680px] lg:w-[680px] lg:blur-[160px]"
         style={{ backgroundColor: glowColor }}
       />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-12 lg:grid-cols-12">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-6 lg:grid-cols-12 lg:gap-12">
         {/* Left: Giant Tabular Temperature Readout */}
-        <div className="flex flex-col gap-6 lg:col-span-6">
-          <div className="flex items-center gap-4">
-            <span className="font-mono-tech text-[11px] tracking-[0.22em] text-[#d4724e] uppercase">
-              03 / THERMODYNAMICS
+        <div className="flex flex-col gap-3 sm:gap-5 lg:col-span-6">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="font-mono-tech text-[10px] tracking-[0.2em] text-[#d4724e] uppercase sm:text-[11px]">
+              Temperature Retention
             </span>
-            <span className="h-[1px] w-12 bg-[#f4f1ea]/20" />
-            <span className="font-mono-tech text-[11px] tracking-[0.18em] text-[#f4f1ea]/60 uppercase">
+            <span className="h-[1px] w-8 bg-[#f4f1ea]/20 sm:w-12" />
+            <span className="font-mono-tech text-[10px] tracking-[0.16em] text-[#f4f1ea]/60 uppercase sm:text-[11px]">
               {phaseLabel}
             </span>
           </div>
 
           <div className="relative">
             <span
-              className="text-[clamp(4.4rem,10vw,8.8rem)] leading-[0.88] font-semibold tracking-[-0.04em] tabular-nums transition-colors duration-300"
+              className="text-[clamp(3.1rem,9vw,8.4rem)] leading-[0.88] font-semibold tracking-[-0.04em] tabular-nums transition-colors duration-300"
               style={{
                 color: isHot ? '#e88b68' : isNeutral ? '#f4f1ea' : '#9ec5df',
               }}
@@ -175,21 +175,21 @@ export function ThermalSection() {
             </span>
           </div>
 
-          <h2 className="font-serif-editorial text-3xl leading-snug italic text-[#f4f1ea]/85 md:text-4xl">
+          <h2 className="font-serif-editorial text-xl leading-snug italic text-[#f4f1ea]/85 sm:text-3xl md:text-4xl">
             Exterior ambient shifts wildly.
-            <span className="block not-italic font-display text-2xl font-bold tracking-tight text-[#f4f1ea] uppercase md:text-3xl">
+            <span className="block not-italic font-display text-lg font-bold tracking-tight text-[#f4f1ea] uppercase sm:text-2xl md:text-3xl">
               The core refuses to flinch.
             </span>
           </h2>
 
-          <p className="max-w-lg text-sm leading-relaxed text-[#f4f1ea]/65 md:text-base">
+          <p className="max-w-lg text-xs leading-relaxed text-[#f4f1ea]/65 sm:text-sm md:text-base">
             Tested in chamber conditions from -20°C Svalbard winds to +45°C desert noon.
-            The copper radiation barrier eliminates infrared heat exchange while the
-            evacuated vacuum wall halts conduction dead.
+            The copper radiation barrier eliminates heat exchange while the vacuum wall
+            locks in temperature.
           </p>
 
-          <div className="mt-2 max-w-md">
-            <div className="mb-2 flex justify-between font-mono-tech text-[10px] tracking-[0.2em] text-[#f4f1ea]/50 uppercase">
+          <div className="mt-1 max-w-md">
+            <div className="mb-1.5 flex justify-between font-mono-tech text-[9px] tracking-[0.18em] text-[#f4f1ea]/50 uppercase sm:text-[10px]">
               <span>-18.4°C ICE (36H)</span>
               <span>+96.2°C BOIL (18H)</span>
             </div>
@@ -207,29 +207,29 @@ export function ThermalSection() {
 
         {/* Right: Live Scroll-Drawn Thermal Retention Curve */}
         <div className="lg:col-span-6">
-          <div className="rounded-3xl border border-[#f4f1ea]/12 bg-[#111115]/85 p-6 backdrop-blur-xl md:p-10">
-            <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+          <div className="rounded-2xl border border-[#f4f1ea]/12 bg-[#111115]/85 p-4 backdrop-blur-xl sm:rounded-3xl sm:p-6 md:p-10">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2 sm:mb-6">
               <div>
-                <span className="block font-mono-tech text-[10px] tracking-[0.22em] text-[#f4f1ea]/50 uppercase">
-                  LAB TELEMETRY · 36-HOUR DECAY CURVE
+                <span className="block font-mono-tech text-[9px] tracking-[0.2em] text-[#f4f1ea]/50 uppercase sm:text-[10px]">
+                  36-Hour Temperature Test
                 </span>
-                <h3 className="mt-1 font-display text-xl font-bold uppercase">
-                  Core Temperature Stability
+                <h3 className="mt-0.5 font-display text-base font-bold uppercase sm:mt-1 sm:text-xl">
+                  Inside vs. Outside
                 </h3>
               </div>
-              <div className="flex items-center gap-5 font-mono-tech text-[10px] tracking-[0.18em] uppercase">
-                <span className="flex items-center gap-2 text-[#f4f1ea]">
+              <div className="flex items-center gap-4 font-mono-tech text-[9px] tracking-[0.16em] uppercase sm:text-[10px]">
+                <span className="flex items-center gap-1.5 text-[#f4f1ea]">
                   <span className="h-2 w-2 rounded-full bg-[#d4724e]" />
                   KALD 01
                 </span>
-                <span className="flex items-center gap-2 text-[#f4f1ea]/45">
+                <span className="flex items-center gap-1.5 text-[#f4f1ea]/45">
                   <span className="h-2 w-2 rounded-full bg-[#f4f1ea]/35" />
                   SINGLE-WALL
                 </span>
               </div>
             </div>
 
-            <svg viewBox="0 0 560 270" className="w-full overflow-visible">
+            <svg viewBox="0 0 560 270" className="max-h-[145px] w-full overflow-visible sm:max-h-[210px] lg:max-h-none">
               {[40, 100, 160, 220].map((y) => (
                 <line
                   key={y}
@@ -290,26 +290,26 @@ export function ThermalSection() {
             <div className="mt-6 grid grid-cols-3 gap-4 border-t border-[#f4f1ea]/10 pt-5">
               <div>
                 <span className="block font-mono-tech text-[10px] tracking-[0.18em] text-[#f4f1ea]/45 uppercase">
-                  DELTA LOSS / HR
+                  AVG. HEAT LOSS
                 </span>
                 <span className="mt-1 block font-display text-lg font-bold text-[#d4724e]">
-                  0.8°C
+                  0.8°C / hr
                 </span>
               </div>
               <div>
                 <span className="block font-mono-tech text-[10px] tracking-[0.18em] text-[#f4f1ea]/45 uppercase">
-                  WALL GAUGE
+                  DOUBLE WALL
                 </span>
                 <span className="mt-1 block font-display text-lg font-bold">
-                  0.5 MM
+                  0.5 mm
                 </span>
               </div>
               <div>
                 <span className="block font-mono-tech text-[10px] tracking-[0.18em] text-[#f4f1ea]/45 uppercase">
-                  SWEAT INDEX
+                  CONDENSATION
                 </span>
                 <span className="mt-1 block font-display text-lg font-bold">
-                  0.00%
+                  None
                 </span>
               </div>
             </div>

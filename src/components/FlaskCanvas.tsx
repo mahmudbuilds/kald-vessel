@@ -389,7 +389,8 @@ export function FlaskCanvas({ edition, choreographyRef }: FlaskCanvasProps) {
     const particles = new THREE.Points(particleGeo, particleMat);
     scene.add(particles);
 
-    // Interactive Drag & Hover Parallax State
+    // Interactive Drag & Hover Parallax State (mouse only on desktop so mobile touch scroll stays silky)
+    const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
     let isDragging = false;
     let prevX = 0;
     let dragRotY = 0;
@@ -398,10 +399,12 @@ export function FlaskCanvas({ edition, choreographyRef }: FlaskCanvasProps) {
     let mouseY = 0;
 
     const onPointerDown = (e: PointerEvent) => {
+      if (isCoarsePointer || e.pointerType === 'touch') return;
       isDragging = true;
       prevX = e.clientX;
     };
     const onPointerMove = (e: PointerEvent) => {
+      if (isCoarsePointer || e.pointerType === 'touch') return;
       mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
       mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
       if (isDragging) {
@@ -415,6 +418,7 @@ export function FlaskCanvas({ edition, choreographyRef }: FlaskCanvasProps) {
     };
 
     const domEl = renderer.domElement;
+    domEl.style.touchAction = 'pan-y';
     domEl.addEventListener('pointerdown', onPointerDown);
     window.addEventListener('pointermove', onPointerMove);
     window.addEventListener('pointerup', onPointerUp);
@@ -436,32 +440,40 @@ export function FlaskCanvas({ edition, choreographyRef }: FlaskCanvasProps) {
       const { explodeProgress, stageShift, visibility } = choreographyRef.current;
 
       container.style.opacity = String(visibility);
-      container.style.pointerEvents = visibility > 0.35 ? 'auto' : 'none';
+      container.style.pointerEvents =
+        !isCoarsePointer && visibility > 0.35 ? 'auto' : 'none';
 
       dragRotY += (targetDragRotY - dragRotY) * 0.08;
 
-      const isDesktop = window.innerWidth >= 1024;
+      const w = window.innerWidth;
+      const isDesktop = w >= 1024;
+      const isTablet = w >= 640 && w < 1024;
       const heroX = isDesktop ? 1.55 : 0;
       const anatomyX = isDesktop ? -1.3 : 0;
       const targetX = THREE.MathUtils.lerp(heroX, anatomyX, stageShift);
 
-      // Pull camera back cleanly during explosion so all 5 layers fit inside frame with zero clipping
-      const targetCamZ = THREE.MathUtils.lerp(8.8, isDesktop ? 11.4 : 12.6, explodeProgress);
-      const targetCamY = THREE.MathUtils.lerp(0.15, 0.38, explodeProgress);
+      // Pull camera back cleanly during explosion so all 5 layers fit inside frame
+      const targetCamZ = THREE.MathUtils.lerp(
+        8.8,
+        isDesktop ? 11.4 : isTablet ? 12.6 : 13.8,
+        explodeProgress
+      );
+      const targetCamY = THREE.MathUtils.lerp(0.15, isDesktop ? 0.38 : 0.2, explodeProgress);
       camera.position.z += (targetCamZ - camera.position.z) * 0.08;
       camera.position.y += (targetCamY - camera.position.y) * 0.08;
 
-      const targetScale = THREE.MathUtils.lerp(
-        isDesktop ? 0.98 : 0.46,
-        isDesktop ? 0.72 : 0.46,
-        explodeProgress
-      );
+      const heroScale = isDesktop ? 0.98 : isTablet ? 0.5 : 0.39;
+      const anatomyScale = isDesktop ? 0.72 : isTablet ? 0.36 : 0.33;
+      const targetScale = THREE.MathUtils.lerp(heroScale, anatomyScale, explodeProgress);
 
-      const mobileOffsetY = isDesktop ? 0 : THREE.MathUtils.lerp(1.22, 0.25, stageShift);
+      // On mobile/tablet, align the bottle inside each section's dedicated showcase window
+      const mobileOffsetY = isDesktop
+        ? 0
+        : THREE.MathUtils.lerp(isTablet ? 1.15 : 1.05, isTablet ? 0.2 : 0.14, stageShift);
 
       flaskRoot.position.x += (targetX - flaskRoot.position.x) * 0.08;
       flaskRoot.position.y =
-        Math.sin(t * 1.1) * 0.06 + mobileOffsetY - explodeProgress * 0.14;
+        Math.sin(t * 1.1) * 0.05 + mobileOffsetY - explodeProgress * 0.14;
       flaskRoot.scale.setScalar(targetScale);
 
       const targetTiltZ = THREE.MathUtils.lerp(-0.14, 0.02, explodeProgress);

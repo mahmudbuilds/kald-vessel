@@ -115,34 +115,34 @@ export const FLASK_SIZES: FlaskSize[] = [
 export const ANATOMY_LAYERS = [
   {
     index: '01',
-    part: 'CAP ASSEMBLY',
-    title: 'CNC Knurled Titanium Cap',
-    spec: '360° Micro-Pitch Thread · Food-Grade Silicone Seal',
+    part: 'THE CAP',
+    title: 'Precision-Milled Titanium Cap',
+    spec: 'Silicone Gasket · Leakproof Thread',
     description:
-      'Milled from solid billet alloy with diamond knurling for effortless torque even with wet hands or alpine gloves.',
+      'Machined with fine diamond knurling for an effortless grip, even with wet hands or winter gloves.',
   },
   {
     index: '02',
-    part: 'THERMAL BARRIER',
-    title: '0.004 Pa Deep Vacuum Core',
-    spec: 'Zero Convection Transfer · 36h Cold / 18h Hot',
+    part: 'INSULATION',
+    title: 'Double-Wall Vacuum Chamber',
+    spec: '36h Ice Cold · 18h Piping Hot',
     description:
-      'Air molecules evacuated at 900°C leaving an impassable thermal void between inner and outer shells.',
+      'Air is evacuated between the inner and outer walls at high heat, stopping temperature transfer in its tracks.',
   },
   {
     index: '03',
-    part: 'RADIATION SHIELD',
-    title: '99.9% Pure Copper Foil Wrap',
-    spec: 'Infrared Reflection Layer · +22% Thermal Retention',
+    part: 'COPPER LINING',
+    title: 'Pure Copper Heat Shield',
+    spec: 'Reflects Radiant Heat · +22% Retention',
     description:
-      'An internal copper lining wraps the inner vessel, bouncing radiant heat energy back into the liquid core.',
+      'A thin wrap of pure copper hugs the inner wall, reflecting thermal energy back into your drink.',
   },
   {
     index: '04',
-    part: 'INNER VESSEL',
-    title: 'Electropolished 304 Surgical Steel',
-    spec: 'Zero Metallic Taste · Non-Reactive Interior',
+    part: 'INTERIOR',
+    title: 'Electropolished 18/8 Steel',
+    spec: 'Pure Taste · Zero Flavor Transfer',
     description:
-      'Mirror-smooth electrochemical polish leaves no microscopic pores for flavors, oils, or odors to cling to.',
+      'Mirror-smooth surgical-grade steel resists coffee oils and citrus, keeping every pour crisp and clean.',
   },
 ];
